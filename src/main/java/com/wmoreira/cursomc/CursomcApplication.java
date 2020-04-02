@@ -31,7 +31,7 @@ public class CursomcApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {		
 		
-		Cliente cli1 = new Cliente(null, "Well", "wsm@gmail.com", "36378912377", TipoCliente.PESSOAFISICA, pe.encode("123"));
+		Cliente cli1 = new Cliente(null, "Well", "wsm@gmail.com", "33355018880", TipoCliente.PESSOAFISICA, pe.encode("123"));
 		
 		clienteRepository.save(cli1);
 
