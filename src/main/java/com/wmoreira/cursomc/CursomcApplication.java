@@ -5,24 +5,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.wmoreira.cursomc.domain.Cliente;
-import com.wmoreira.cursomc.domain.enums.TipoCliente;
-import com.wmoreira.cursomc.repository.CategoriaRepository;
-import com.wmoreira.cursomc.repository.CidadeRepository;
-import com.wmoreira.cursomc.repository.ClienteRepository;
-import com.wmoreira.cursomc.repository.EstadoRepository;
-import com.wmoreira.cursomc.repository.ProdutoRepository;
+import com.wmoreira.cursomc.service.DBService;
 
 @SpringBootApplication
 public class CursomcApplication implements CommandLineRunner {
 
 	@Autowired
-	private BCryptPasswordEncoder pe;
-	;
-	@Autowired
-	private ClienteRepository clienteRepository;
+	private DBService dbService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
@@ -31,9 +21,8 @@ public class CursomcApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {		
 		
-		Cliente cli1 = new Cliente(null, "Well", "wsm@gmail.com", "33355018880", TipoCliente.PESSOAFISICA, pe.encode("123"));
-		
-		clienteRepository.save(cli1);
+		dbService.instantiateTestDatabase();
+
 
 	}	
 }
