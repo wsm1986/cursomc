@@ -7,12 +7,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.wmoreira.cursomc.service.DBService;
+import com.wmoreira.cursomc.service.S3Service;
 
 @SpringBootApplication
 public class CursomcApplication implements CommandLineRunner {
 
 	@Autowired
 	private DBService dbService;
+	
+	@Autowired
+	private S3Service s3Service;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
@@ -21,8 +25,7 @@ public class CursomcApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {		
 		
-		dbService.instantiateTestDatabase();
-
+		//--dbService.instantiateTestDatabase();
 
 	}	
 }
