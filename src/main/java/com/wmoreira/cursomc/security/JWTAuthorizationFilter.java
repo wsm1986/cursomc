@@ -15,6 +15,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
+import com.wmoreira.cursomc.service.UserService;
+
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
 	private JWTUtil jwtUtil;
@@ -39,6 +41,10 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 				SecurityContextHolder.getContext().setAuthentication(auth);
 			}
 		}
+		UserSpringSecurity user = UserService.authenticated();
+		String token = jwtUtil.generateToken(user.getUsername());
+		response.addHeader("Authorization", "Bearer " + token);
+		System.out.println(response.getHeader("Authorization"));
 		chain.doFilter(request, response);
 	}
 
