@@ -26,7 +26,7 @@ public class TransferenciaResource {
 	private TransferenciaService service;
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<List<Transferencia>> find(@PathVariable Integer id) {
+	public ResponseEntity<List<Transferencia>> find() {
 		return ResponseEntity.ok().body(service.findAll());
 	}
 	

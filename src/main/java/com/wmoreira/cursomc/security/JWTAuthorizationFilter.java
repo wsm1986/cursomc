@@ -41,10 +41,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 				SecurityContextHolder.getContext().setAuthentication(auth);
 			}
 		}
-		UserSpringSecurity user = UserService.authenticated();
-		String token = jwtUtil.generateToken(user.getUsername());
-		response.addHeader("Authorization", "Bearer " + token);
-		System.out.println(response.getHeader("Authorization"));
+
 		chain.doFilter(request, response);
 	}
 
