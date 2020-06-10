@@ -1,6 +1,7 @@
 package com.wmoreira.cursomc.security;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -18,7 +19,10 @@ public class UserSpringSecurity  implements UserDetails {
 		private String senha;
 		private String nome;
 		private Collection<? extends GrantedAuthority> authorities;
+		private List<String> roles;
 
+
+	
 		public UserSpringSecurity() {
 		}
 
@@ -29,6 +33,8 @@ public class UserSpringSecurity  implements UserDetails {
 			this.senha = senha;
 			this.nome = nome;
 			this.authorities = perfis.stream().map(x -> new SimpleGrantedAuthority(x.getDescricao())).collect(Collectors.toList());
+			this.roles = perfis.stream().map(x -> x.getDescricao()).collect(Collectors.toList());
+		
 		}
 		
 		public String getNome() {
@@ -81,4 +87,13 @@ public class UserSpringSecurity  implements UserDetails {
 		public boolean isEnabled() {
 			return true;
 		}
+		
+		public List<String> getRoles() {
+			return roles;
+		}
+
+		public void setRoles(List<String> roles) {
+			this.roles = roles;
+		}
+
 	}

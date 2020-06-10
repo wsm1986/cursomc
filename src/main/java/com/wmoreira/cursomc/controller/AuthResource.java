@@ -28,12 +28,12 @@ public class AuthResource {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@RequestMapping(value = "/user", method = RequestMethod.POST)
-	public ResponseEntity<Usuario> user(HttpServletResponse response) {
-		UserSpringSecurity user = UserService.authenticated();
-		
-		Usuario usuario = new Usuario(user.getId(), user.getNome(), user.getUsername());
-		
-		return ResponseEntity.ok().body(usuario);
-	}
+//	@RequestMapping(value = "/user", method = RequestMethod.POST)
+//	public ResponseEntity<Usuario> user(HttpServletResponse response) {
+//		UserSpringSecurity user = UserService.authenticated();
+//		
+//		//Usuario usuario = new Usuario(user.getId(), user.getNome(), user.getUsername());
+//		
+//		return ResponseEntity.ok().body();
+//	}
 }
